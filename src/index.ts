@@ -4,6 +4,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import logger from "./utils/logger"
+import compression from "compression";
 const app = express();
 dotenv.config();
 
@@ -32,11 +33,12 @@ app.listen(port, () => {
 
 
 function initMiddleWares(app :express.Application): void {
-    logger.info("init middlewares...")
+    logger.info("init middlewares...");
     app.use(morgan("dev"));
     app.use(cors({
         origin: ["http://localhost:8080"],
         methods: ["GET", "POST", "PUT", "DELETE"], 
-        allowedHeaders: ["Content-Type", "Authorization"]}))
-    app.use(helmet())
+        allowedHeaders: ["Content-Type", "Authorization"]}));
+    app.use(helmet());
+    app.use(compression());
 }
