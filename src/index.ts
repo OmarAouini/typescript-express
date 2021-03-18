@@ -5,6 +5,7 @@ import helmet from "helmet";
 import cors from "cors";
 import logger from "./utils/logger"
 import compression from "compression";
+import { allRouter } from "./api/routes";
 const app = express();
 dotenv.config();
 
@@ -15,9 +16,7 @@ const port = process.env.PORT;
 initMiddleWares(app);
 
 //routes
-app.get("/", (req, res) =>{
-    res.status(200).send("hello")
-});
+app.use("/", allRouter);
 
 //404 handler
 app.use((req, res) => {
