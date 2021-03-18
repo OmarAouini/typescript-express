@@ -5,7 +5,7 @@ import helmet from "helmet";
 import cors from "cors";
 import logger from "./utils/logger"
 import compression from "compression";
-import { allRouter } from "./api/routes";
+import allRouter  from "./api/routes";
 const app = express();
 dotenv.config();
 
